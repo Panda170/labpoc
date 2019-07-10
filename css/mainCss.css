@@ -1,0 +1,25 @@
+body{
+	background-color: #F9F6F6;
+}
+.myBorder{
+	border-color: #5C5959;
+	border:solid;
+	border-width: 3px;
+	margin:15px;
+}
+.status{
+	width: 30%;
+	margin: 15px 35% 10px 35%;
+	padding: 1px 2px 2px 3px;
+	background-color: #97FFDE;
+}
+table,th, td{
+	border:solid black 2px;
+	border-collapse: collapse;
+}
+td, th{
+	padding: 2px 5px 2px 3px; 
+}
+td{
+	text-align: center;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyController">
+<head>
+	<meta charset="UTF-8">
+	<title>Servidor {{servPort}}</title>
+	<script type="text/javascript" src="./js/angular.min.js"></script> 
+	
+</head>
+<body ng-controller="ctrl">
+       <button  ng-click="saludar()">Saludar</button>
+       <br>
+       <button  ng-click="createNonce()">Crear Nonces</button>
+       <br>
+        <a download="info.txt" id="downloadlink">descargar <blockquote></blockquote></a>
+        <br>
+        <p id="megaSize">25</p>
+        <div class="slidecontainer">
+		  <input type="range" min="1" max="50" value="25" class="slider" id="myRange">
+		</div>
+		<br>
+		<input type="file" name="file" id="file">
+		<br>
+		<button  ng-click="readByLine()">buscar . . . </button>
+		<br>
+		<h3>{{appPort}}</h3>
+		<textarea rows="4" cols="50" placeholder="puerto:8080" ng-model="appPort"></textarea>
+
+
+<script src="./js/controller.js"></script>
+<script src="./js/jquery-3.4.1.min.js"></script>
+</body>
+</html>
