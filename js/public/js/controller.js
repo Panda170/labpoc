@@ -5,20 +5,16 @@ app.controller("ctrl", function ($scope, $http) {
   $scope.saludo = "";
   $scope.fileSize = 25;
   $scope.appPort=3000;
-  var data = {
-  "user" : {
-    "name": "juan",
-    "address": "171.0.0.1"
-  }
-};  
-
-
-
-
+  $scope.appIp="127.0.0.1";
+  $scope.username="";
+ 
    $scope.saludar = function() {
-      $http.post("http://localhost:"+$scope.appPort+"/saludar",data)
+     var data = {
+          "name": $scope.username,
+          "ip":0
+      };  
+      $http.post("http://"+$scope.appIp+":"+$scope.appPort+"/saludar",data)
       .then(function (res) {
-        res.send("Hola mundo feliz");
       }).catch(function(e){
         alert("Error al saludar " + e);
       });
@@ -66,7 +62,8 @@ slider.oninput = function() {
 }
 
 $scope.readByLine = function() {
-    alert("Buscando . . . .");
+  var win = true;
+    let initialTime = Date.now();
     var file = document.getElementById('file').files[0];
     var reader = new FileReader();
     reader.onload = function(progressEvent){
@@ -76,13 +73,38 @@ $scope.readByLine = function() {
           if (lines[i].charAt(j) == "A" && ((j+1) < lines[i].length)) {
             if (lines[i].charAt(j+1) == "Z") {
               console.log(lines[i] +": ===>" +i);
-              return;
+              var finalTime = Date.now();
+              minar(lines[i], (finalTime - initialTime), "0");
+              win = false;
+              break;
             }
           }
         }
-      }
-    };
-    reader.readAsText(file);
+          if (i == (lines.length-1) && win) {
+            var finalTime = Date.now();
+            minar("No se mino", (finalTime - initialTime), "X");
+          }
+        }
     }
+            reader.readAsText(file);
+    
+    };
+
+
+     function minar(line, time,iswin) {
+     var dataMining = {
+          "name": $scope.username,
+          "fileSize":$scope.fileSize,
+          "line":line,
+          "time":time,
+          "iswin":iswin
+      };  
+      $http.post("http://"+$scope.appIp+":"+$scope.appPort+"/minar",dataMining)
+      .then(function (res) {
+      }).catch(function(e){
+        alert("Error al saludar " + e);
+      });
+    };
+
 
 });

@@ -4,29 +4,69 @@
 	<meta charset="UTF-8">
 	<title>Servidor {{servPort}}</title>
 	<script type="text/javascript" src="./js/angular.min.js"></script> 
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	
 </head>
 <body ng-controller="ctrl">
-       <button  ng-click="saludar()">Saludar</button>
-       <br>
-       <button  ng-click="createNonce()">Crear Nonces</button>
-       <br>
-        <a download="info.txt" id="downloadlink">descargar <blockquote></blockquote></a>
-        <br>
-        <p id="megaSize">25</p>
-        <div class="slidecontainer">
-		  <input type="range" min="1" max="50" value="25" class="slider" id="myRange">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<h1>Proof of capacity</h1>
 		</div>
-		<br>
-		<input type="file" name="file" id="file">
-		<br>
-		<button  ng-click="readByLine()">buscar . . . </button>
-		<br>
-		<h3>{{appPort}}</h3>
-		<textarea rows="4" cols="50" placeholder="puerto:8080" ng-model="appPort"></textarea>
+	    <div class="row my-3">
+		      <div class="col d-flex justify-content-center">
+		        <h3>Puerto: {{appPort}}</h3>
+		    <textarea rows="1" cols="21" placeholder="puerto:8080" ng-model="appPort"></textarea>
+		      </div>
+		      <div class="col d-flex justify-content-center">
+		        <h3>IP: {{appIp}}</h3>
+		    <textarea rows="1" cols="21" placeholder="direccion ip" ng-model="appIp"></textarea>
+		      </div>
+	    </div>
+	    <div class="row d-flex justify-content-center">
+		<h3>Nombre {{username}}</h3>
+		<textarea style="margin-left: 10px;" minlength="4" maxlength="21" rows="1" cols="21" placeholder="Nombre del miner@" ng-model="username">
+		</textarea>
+       	
+	    </div>
+	    <div class="container-fluid ">
+	    	<div class="row my-3 ml-auto mr-auto">
+	    		<p class="ml-auto font-weight-bold">Elegir el tamaño de disco disponible:</p>
+	    		<p id="megaSize">25</p>
+	    		<p class="mr-3">MB</p>
+		        <div class="slidecontainer mr-auto">
+				  <input type="range" min="1" max="50" value="25" class="slider" id="myRange">
+				</div>
+	    	</div>
+	    	<div class="row d-flex justify-content-center">
+	    		<button  ng-click="createNonce()" class="btn btn-danger my-3">Crear Nonces</button>
+	    	</div>
+	     		<a class="d-flex justify-content-center"download="Nonce.txt" id="downloadlink" >descargar <blockquote></blockquote></a>
+	    </div>
+	    <div class="my-3">
+	    	<div class="row d-flex justify-content-center">
+	    	<input type="file" name="file" id="file">
+	    	</div>
+	    	<div class="row d-flex justify-content-center my-2">
+				<button  ng-click="readByLine()" class="btn btn-primary">Buscar . . . </button>
+	    	</div>
+	    </div>
+	</div>
+
+
+	
+        
+       
+       
+       
+        
+		
+		
 
 
 <script src="./js/controller.js"></script>
 <script src="./js/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
